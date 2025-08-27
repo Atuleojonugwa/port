@@ -191,10 +191,10 @@ function App() {
 
         <form className="flex justify-center my-5 mx-auto flex-col gap-5 max-w-[800px]">
           <div className="flex gap-5 items-center justify-center">
-            <input type="text" className="w-full border-0 border-b-2 border-b-[#2563eb] text-[15px] pb-5 text-[#1e293b] bg-transparent focus:outline-none placeholder:text-[#94a3b8]" placeholder="Name" required />
-            <input type="email" className="w-full border-0 border-b-2 border-b-[#2563eb] text-[15px] pb-5 text-[#1e293b] bg-transparent focus:outline-none placeholder:text-[#94a3b8]" placeholder="Email" required />
+            <input type="text" className="w-full border-0 border-b-2 border-b-[#2563eb] text-[15px] pb-5 text-[#94a3b8] bg-transparent focus:outline-none placeholder:text-[#94a3b8]" placeholder="Name" required />
+            <input type="email" className="w-full border-0 border-b-2 border-b-[#2563eb] text-[15px] pb-5 text-[#94a3b8] bg-transparent focus:outline-none placeholder:text-[#94a3b8]" placeholder="Email" required />
           </div>
-          <textarea placeholder="Message" rows="5" className="w-full bg-transparent border-0 border-b-2 border-b-[#2563eb] text-[15px] pb-5 text-[#1e293b] focus:outline-none placeholder:text-[#94a3b8]" required></textarea>
+          <textarea placeholder="Message" rows="5" className="w-full bg-transparent border-0 border-b-2 border-b-[#2563eb] text-[15px] pb-5 text-[#94a3b8] focus:outline-none placeholder:text-[#94a3b8]" required></textarea>
           <button type="submit" className="text-[#f8fafc] cursor-pointer py-2.5 px-2.5 bg-transparent rounded-[30px] w-[150px] border border-[#2563eb] self-end  text-[15px] hover:bg-[#2563eb]  transition ease-in-out duration-300  " >Send Message</button>
         </form>
 
