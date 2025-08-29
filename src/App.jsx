@@ -1,7 +1,7 @@
 import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { faCode, faEnvelope, faPhone, faLocationDot, faBars} from "@fortawesome/free-solid-svg-icons";
+import { faCode, faEnvelope, faPhone, faLocationDot, faBars, faTimes} from "@fortawesome/free-solid-svg-icons";
 import pic from "./assets/pic.png";
 import "devicon/devicon.min.css";
 import project1 from "./assets/project.png";
@@ -14,9 +14,10 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { useRef } from "react";
 import emailjs from "emailjs-com";
-
+import { useState } from "react";
 
 function App() {
+  const [open, setOpen] = useState(false);
   const form = useRef();
 
   const sendEmail = (e) => {
@@ -54,9 +55,8 @@ function App() {
     { id:2, iconClass: "devicon-css3-plain colored", name: "CSS" },
     { id:3, iconClass: "devicon-tailwindcss-original colored", name: "Tailwind CSS" },
     { id:4, iconClass: "devicon-javascript-plain colored", name: "JavaScript" },
-    { id:5, iconClass: "devicon-react-original colored", name: "React" },
-  ];
-  
+    { id: 5, iconClass: "devicon-react-original colored", name: "React"}
+    ];
   const projects = [
     {
       id: 1,
@@ -87,6 +87,7 @@ function App() {
         sm:mx-5 sm:my-0 lg:px-5 lg:py-6 xl:px-10 2xl:w-[1440px] 2xl:mx-auto 2xl:my-0 2xl:px-10
       ">
         <FontAwesomeIcon className="text-[#f8fafc] text-[28px]" icon={faCode} />
+        <button className="appearance-none cursor-pointer" onClick={() => setOpen(!open)}  style={{ listStyle: "none" }}><FontAwesomeIcon className="text-white text-[20px] " icon={open ? faTimes : faBars}/></button>
         <ul className=" items-center gap-[5px] hidden sm:gap-2.5 sm:flex ">
           <li className="list-none">
             <a className="decoration-0 text-[#f8fafc] text-[16px] hover:text-sky-400 transition ease-in-out duration-500 py-2.5 px-5" href="#home">
@@ -118,17 +119,19 @@ function App() {
             </a>
           </li>
         </ul>
-          <details className="block relative sm:hidden lg:hidden md:hidden">
-            <summary className="appearance-none cursor-pointer"  style={{ listStyle: "none" }}><FontAwesomeIcon className="text-white text-[20px]" icon={faBars}/></summary>
-            <ul className="flex flex-col bg-[#0f172a] z-1 p-2.5 gap-[5px] w-[140px] absolute right-0 top-[35px]   ">
+          
+      </nav>
+      
+      <div className="block   sm:hidden lg:hidden md:hidden">
+          { open && ( <ul className="flex flex-col bg-[#0f172a] shadow-[0_4px_6px_-1px_#3b82f6] z-1 p-2.5 gap-[5px] w-full items-center transition-all duration-500   ">
                 <li className="list-none">
-                  <a className="decoration-0 text-[#f8fafc] text-[12px] hover:text-sky-400 transition ease-in-out duration-500 py-[5px] " href="#home">
+                  <a onClick={() => setOpen(false)} className="decoration-0 text-[#f8fafc] text-[12px] hover:text-sky-400 transition ease-in-out duration-500 py-[5px] " href="#home">
                     Home
                   </a>
                 </li>
                 <li className="list-none">
                   <a
-                    className="decoration-0 text-[#f8fafc] text-[12px] hover:text-sky-400 transition ease-in-out duration-500 py-[5px] "
+                    onClick={() => setOpen(false)} className="decoration-0 text-[#f8fafc] text-[12px] hover:text-sky-400 transition ease-in-out duration-500 py-[5px] "
                     href="#about"
                   >
                     About me
@@ -136,7 +139,7 @@ function App() {
                 </li>
                 <li className="list-none">
                   <a
-                    className="decoration-0 text-[#f8fafc] text-[12px] hover:text-sky-400 transition ease-in-out duration-500 py-[5px] "
+                    onClick={() => setOpen(false)} className="decoration-0 text-[#f8fafc] text-[12px] hover:text-sky-400 transition ease-in-out duration-500 py-[5px] "
                     href="#skills"
                   >
                     Skills
@@ -144,22 +147,21 @@ function App() {
                 </li>
                 <li className="list-none">
                   <a
-                    className="decoration-0 text-[#f8fafc] text-[12px] hover:text-sky-400 transition ease-in-out duration-500 py-[5px] "
+                    onClick={() => setOpen(false)} className="decoration-0 text-[#f8fafc] text-[12px] hover:text-sky-400 transition ease-in-out duration-500 py-[5px] "
                     href="#projects"
                   >
                     Projects
                   </a>
                 </li>
               </ul>
-          </details>
-      </nav>
-
+            )}
+          </div>
 
 
       <section
         id="home"
-        className="text-[#f8fafc] flex flex-col justify-between mt-[20px] mx-[20px] mb-[50px] sm:mt-10 sm:mx-10 sm:mb-[50px] sm:flex-col sm:items-center
-        lg:flex-row lg:items-center lg:justify-between lg:mx-10 lg:mt-10 lg:mb-[80px] xl:mx-10 xl:gap-20 2xl:w-[1440px] 2xl:mx-auto 2xl:my-0 2xl:px-10
+        className=" {`${open ? 'mt-[96px]' : 'mt-[20px]'}  text-[#f8fafc] flex flex-col justify-between mt-[20px] mx-[20px] mb-[50px] sm:mt-10 sm:mx-10 sm:mb-[50px] sm:flex-col sm:items-center
+        lg:flex-row lg:items-center lg:justify-between lg:mx-10 lg:mt-10 lg:mb-[80px] xl:mx-10 xl:gap-20 2xl:w-[1440px] 2xl:mx-auto 2xl:my-0 2xl:px-10 scroll-mt-[80px]}
         " 
         data-aos="fade-up"
       >
@@ -222,7 +224,7 @@ function App() {
 
       <section className=" mt-[20px] mx-[20px] mb-[50px] text-[#f8fafc] sm:mt-10 sm:mx-10 sm:mb-[50px] sm:px-5 sm:py-[30px] lg:mx-10 lg:p-2.5 xl:mx-32 2xl:w-[1440px] 2xl:mx-auto 2xl:my-0 2xl:px-10 2xl:mt-[50px]" id="skills" data-aos="fade-up">
         <h1 className="text-center text-[#f8fafc] mb-2.5 text-[20px] font-bold sm:text-[36px] sm:mb-5 lg:text-[36px] xl:text-[36px] ">Skills</h1>
-        <div className="flex flex-col  sm:grid grid-cols-5 gap-5 p-2.5 sm:p-2.5 sm:gap-5 lg:grid-cols-6 xl:grid-cols-5 xl:gap-10">
+        <div className="grid grid-cols-2 sm:grid gap-5 p-2.5 sm:p-2.5 sm:gap-5 lg:grid-cols-6 xl:grid-cols-5 xl:gap-10">
           {skills.map((skill) => (
             < SkillCard
               key={skill.id}
@@ -249,7 +251,7 @@ function App() {
         
       </section>
 
-      <section className="bg-[#1e293b] p-2.5 text-center text-[#f8fafc]  sm:p-5 sm:w-full lg:px-20 lg:py-10 xl:px-10 2xl:w-[1440px] 2xl:mx-auto 2xl:my-0 2xl:px-10 2xl:mt-[50px]" id="contact" data-aos="fade-up">
+      <section className="bg-[#1e293b] p-3 text-center text-[#f8fafc]  sm:p-5 sm:w-full lg:px-20 lg:py-10 xl:px-10 2xl:w-[1440px] 2xl:mx-auto 2xl:my-0 2xl:px-10 2xl:mt-[50px]" id="contact" data-aos="fade-up">
         <h1 className="mb-2.5 text-[20px] font-bold md:text-[36px] lg:text-[36px] xl:text-[36px]">Contact Me</h1>
         <div className="flex w-full md:w-[600px] my-0 mx-auto flex-col lg:w-[800px] xl:w-[800px]">
           <h2 className="text-[16px]">If you’d like to collaborate or have any questions, feel free to reach out!</h2>
@@ -260,8 +262,8 @@ function App() {
           </div>
         </div>
 
-        <form ref={form} onSubmit={sendEmail} className="flex justify-center my-5 mx-auto flex-col gap-5 max-w-[800px] sm:my-2.5">
-          <div className="flex gap-5 items-center justify-center">
+        <form ref={form} onSubmit={sendEmail} className="flex  justify-center my-5 mx-auto flex-col gap-5 max-w-[800px] sm:my-2.5">
+          <div className="flex   gap-5 items-center justify-center">
             <input type="text" name="user_name" className="w-full border-0 border-b-2 border-b-[#2563eb] text-[15px] pb-2.5 text-[#94a3b8] bg-transparent focus:outline-none placeholder:text-[#94a3b8] sm:p-5" placeholder="Name" required />
             <input type="email" name="user_email" className="w-full border-0 border-b-2 border-b-[#2563eb] text-[15px] pb-2.5 text-[#94a3b8] bg-transparent focus:outline-none placeholder:text-[#94a3b8] sm:p-5 " placeholder="Email" required />
           </div>

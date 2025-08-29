@@ -28,3 +28,8 @@ body{
 @utility animate-border-roll {
   animation: border-roll 1s linear forwards;
 }
+.react{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
