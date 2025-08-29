@@ -3,7 +3,7 @@ import React from "react";
 
 const ProjectCard = ({ image, title, description }) => {
   return (
-    <div className=" flex flex-col overflow-hidden relative cursor-pointer p-[15px]
+    <div className=" flex flex-col overflow-hidden relative cursor-pointer p-[10px]
         before:content-[''] before:absolute before:inset-0 
         before:border before:border-transparent before:rounded-xl 
         before:pointer-events-none before:opacity-0 
@@ -13,11 +13,11 @@ const ProjectCard = ({ image, title, description }) => {
         src={image}
         alt={title}
         className="  rounded-lg w-full  hover:scale-105 transition duration-300 ease-in-out
-        
+      
         "
       />
       <div className="text-[#f8fafc]">
-        <h2 className="text-xl mt-5 mb-5">{title}</h2>
+        <h2 className="text-[18px] mt-2.5 mb-2.5 sm:mt-5 sm:mb-5 text-xl">{title}</h2>
         <p className="text-[#94a3b8] text-[16px]">{description}</p>
       </div>
     </div>
