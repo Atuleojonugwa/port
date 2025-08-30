@@ -87,7 +87,7 @@ function App() {
         sm:mx-5 sm:my-0 lg:px-5 lg:py-6 xl:px-10 2xl:w-[1440px] 2xl:mx-auto 2xl:my-0 2xl:px-10
       ">
         <FontAwesomeIcon className="text-[#f8fafc] text-[28px]" icon={faCode} />
-        <button className="appearance-none cursor-pointer" onClick={() => setOpen(!open)}  style={{ listStyle: "none" }}><FontAwesomeIcon className="text-white text-[20px] " icon={open ? faTimes : faBars}/></button>
+        <button className="appearance-none cursor-pointer sm:hidden lg:hidden md:hidden xl:hidden" onClick={() => setOpen(!open)}  style={{ listStyle: "none" }}><FontAwesomeIcon className="text-white text-[20px] " icon={open ? faTimes : faBars}/></button>
         <ul className=" items-center gap-[5px] hidden sm:gap-2.5 sm:flex ">
           <li className="list-none">
             <a className="decoration-0 text-[#f8fafc] text-[16px] hover:text-sky-400 transition ease-in-out duration-500 py-2.5 px-5" href="#home">
@@ -122,7 +122,7 @@ function App() {
           
       </nav>
       
-      <div className="block   sm:hidden lg:hidden md:hidden">
+      <div className="block sm:hidden lg:hidden md:hidden xl:hidden ">
           { open && ( <ul className="flex flex-col bg-[#0f172a] shadow-[0_4px_6px_-1px_#3b82f6] z-1 p-2.5 gap-[5px] w-full items-center transition-all duration-500   ">
                 <li className="list-none">
                   <a onClick={() => setOpen(false)} className="decoration-0 text-[#f8fafc] text-[12px] hover:text-sky-400 transition ease-in-out duration-500 py-[5px] " href="#home">
@@ -224,7 +224,7 @@ function App() {
 
       <section className=" mt-[20px] mx-[20px] mb-[50px] text-[#f8fafc] sm:mt-10 sm:mx-10 sm:mb-[50px] sm:px-5 sm:py-[30px] lg:mx-10 lg:p-2.5 xl:mx-32 2xl:w-[1440px] 2xl:mx-auto 2xl:my-0 2xl:px-10 2xl:mt-[50px]" id="skills" data-aos="fade-up">
         <h1 className="text-center text-[#f8fafc] mb-2.5 text-[20px] font-bold sm:text-[36px] sm:mb-5 lg:text-[36px] xl:text-[36px] ">Skills</h1>
-        <div className="grid grid-cols-2 sm:grid gap-5 p-2.5 sm:p-2.5 sm:gap-5 lg:grid-cols-6 xl:grid-cols-5 xl:gap-10">
+        <div className="grid grid-cols-2 sm:grid gap-5 p-2.5 sm:p-2.5 sm:gap-5 lg:grid-cols-5 lg:gap-5 xl:grid-cols-5 xl:gap-10">
           {skills.map((skill) => (
             < SkillCard
               key={skill.id}
