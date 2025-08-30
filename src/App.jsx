@@ -20,6 +20,28 @@ function App() {
   const [open, setOpen] = useState(false);
   const form = useRef();
 
+
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["home", "about", "skills", "projects", "contact"];
+      let current = "home";
+
+      sections.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section && window.scrollY >= section.offsetTop - 100) {
+          current = id;
+        }
+      });
+
+      setActiveSection(current);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -83,20 +105,21 @@ function App() {
 
   return (
     <div className="m-0 p-0 box-border scroll-smooth">
-      <nav className="my-0 mx-2.5 flex items-center justify-between border-b border-blue-500 p-5 
-        sm:mx-5 sm:my-0 lg:px-5 lg:py-6 xl:px-10 2xl:w-[1440px] 2xl:mx-auto 2xl:my-0 2xl:px-10
+      <nav className=" fixed top-0  left-0 w-full z-50
       ">
+        <div className="z-50  my-0 bg-[#0f172a]   flex items-center justify-between border-b border-blue-500 p-5 
+        sm:my-0 lg:px-5 lg:py-6 xl:px-10 2xl:w-[1440px] 2xl:mx-auto 2xl:my-0 2xl:px-10">
         <FontAwesomeIcon className="text-[#f8fafc] text-[28px]" icon={faCode} />
         <button className="appearance-none cursor-pointer sm:hidden lg:hidden md:hidden xl:hidden" onClick={() => setOpen(!open)}  style={{ listStyle: "none" }}><FontAwesomeIcon className="text-white text-[20px] " icon={open ? faTimes : faBars}/></button>
         <ul className=" items-center gap-[5px] hidden sm:gap-2.5 sm:flex ">
           <li className="list-none">
-            <a className="decoration-0 text-[#f8fafc] text-[16px] hover:text-sky-400 transition ease-in-out duration-500 py-2.5 px-5" href="#home">
+            <a className={activeSection === "home" ? "text-sky-400 font-semibold" : "decoration-0 text-[#f8fafc] text-[16px] hover:text-sky-400 transition ease-in-out duration-500 py-2.5 px-5"} href="#home">
               Home
             </a>
           </li>
           <li className="list-none">
             <a
-              className="decoration-0 text-[#f8fafc] text-[16px] hover:text-sky-400 transition ease-in-out duration-500 py-2.5 px-5"
+              className={activeSection === "about" ? "text-sky-400 font-semibold" : "decoration-0 text-[#f8fafc] text-[16px] hover:text-sky-400 transition ease-in-out duration-500 py-2.5 px-5"}
               href="#about"
             >
               About me
@@ -104,7 +127,7 @@ function App() {
           </li>
           <li className="list-none">
             <a
-              className="decoration-0 text-[#f8fafc] text-[16px] hover:text-sky-400 transition ease-in-out duration-500 py-2.5 px-5"
+              className={activeSection === "skills" ? "text-sky-400 font-semibold" : "decoration-0 text-[#f8fafc] text-[16px] hover:text-sky-400 transition ease-in-out duration-500 py-2.5 px-5"}
               href="#skills"
             >
               Skills
@@ -112,17 +135,18 @@ function App() {
           </li>
           <li className="list-none">
             <a
-              className="decoration-0 text-[#f8fafc] text-[16px] hover:text-sky-400 transition ease-in-out duration-500 py-2.5 px-5"
+              className={activeSection === "projects" ? "text-sky-400 font-semibold" : "decoration-0 text-[#f8fafc] text-[16px] hover:text-sky-400 transition ease-in-out duration-500 py-2.5 px-5"}
               href="#projects"
             >
               Projects
             </a>
           </li>
         </ul>
+        </div>
           
       </nav>
       
-      <div className="block sm:hidden lg:hidden md:hidden xl:hidden ">
+      <div className="block mt-16 sm:hidden lg:hidden md:hidden xl:hidden ">
           { open && ( <ul className="flex flex-col bg-[#0f172a] shadow-[0_4px_6px_-1px_#3b82f6] z-1 p-2.5 gap-[5px] w-full items-center transition-all duration-500   ">
                 <li className="list-none">
                   <a onClick={() => setOpen(false)} className="decoration-0 text-[#f8fafc] text-[12px] hover:text-sky-400 transition ease-in-out duration-500 py-[5px] " href="#home">
@@ -160,10 +184,10 @@ function App() {
 
       <section
         id="home"
-        className=" {`${open ? 'mt-[96px]' : 'mt-[20px]'}  text-[#f8fafc] flex flex-col justify-between mt-[20px] mx-[20px] mb-[50px] sm:mt-10 sm:mx-10 sm:mb-[50px] sm:flex-col sm:items-center
-        lg:flex-row lg:items-center lg:justify-between lg:mx-10 lg:mt-10 lg:mb-[80px] xl:mx-10 xl:gap-20 2xl:w-[1440px] 2xl:mx-auto 2xl:my-0 2xl:px-10 scroll-mt-[80px]}
-        " 
-        data-aos="fade-up"
+        className={`${open ? "mt-[30px]" : "mt-[30px] lg:mt-[80px] xl:mt-[150px] "} text-[#f8fafc] flex flex-col justify-between mx-[20px] mb-[50px] sm:mt-10 sm:mx-10 sm:mb-[50px] sm:flex-col sm:items-center lg:flex-row lg:items-center lg:justify-between lg:mx-10 lg:mt-10 lg:mb-[80px] xl:mx-10 xl:gap-20 
+        2xl:w-[1440px] 2xl:mx-auto 2xl:my-0 2xl:px-10 `}
+
+        data-aos={`${open ? "!fade-up" : "fade-up"}`}
       >
         <div className="flex flex-col mt-[30px] sm:items-center sm:mt-[60px] lg:items-start">
           <h1 className="text-[30px] font-semibold mb-2.5 sm:text-[52px] sm:mb-5 lg:text-[52px] xl:text-[72px]">
