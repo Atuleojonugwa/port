@@ -64,13 +64,18 @@ function App() {
         }
       );
   }
-  
+
   useEffect(() => {
     AOS.init({
-      duration: 1000, 
+      duration: 800, 
       once: true, 
     });
   }, []);
+
+  useEffect(() => {
+    AOS.refresh();
+  }, [open]);
+  
 
   const skills = [
     { id:1, iconClass: "devicon-html5-plain colored", name: "HTML" },
@@ -106,7 +111,7 @@ function App() {
   return (
     <div className="m-0 p-0 box-border scroll-smooth">
       <nav className=" fixed top-0  left-0 w-full z-50
-      ">
+      " data-aos="fade-up">
         <div className="z-50  my-0 bg-[#0f172a]   flex items-center justify-between border-b border-blue-500 p-5 
         sm:my-0 lg:px-5 lg:py-6 xl:px-10 2xl:w-[1440px] 2xl:mx-auto 2xl:my-0 2xl:px-10">
         <FontAwesomeIcon className="text-[#f8fafc] text-[28px]" icon={faCode} />
@@ -184,11 +189,12 @@ function App() {
 
       <section
         id="home"
-        className={`${open ? "mt-[30px]" : "mt-[30px] lg:mt-[80px] xl:mt-[150px] "} text-[#f8fafc] flex flex-col justify-between mx-[20px] mb-[50px] sm:mt-10 sm:mx-10 sm:mb-[50px] sm:flex-col sm:items-center lg:flex-row lg:items-center lg:justify-between lg:mx-10 lg:mt-10 lg:mb-[80px] xl:mx-10 xl:gap-20 
+        className={`${open ? "mt-[30px]" : "mt-[100px] lg:mt-[80px] xl:mt-[150px] "} text-[#f8fafc] flex flex-col justify-between mx-[20px] mb-[50px] sm:mt-10 sm:mx-10 sm:mb-[50px] sm:flex-col sm:items-center lg:flex-row lg:items-center lg:justify-between lg:mx-10 lg:mt-10 lg:mb-[80px] xl:mx-10 xl:gap-20 
         2xl:w-[1440px] 2xl:mx-auto 2xl:my-0 2xl:px-10 `}
 
-        data-aos={`${open ? "!fade-up" : "fade-up"}`}
-      >
+        data-aos="fade-up"   
+        data-aos-once="true"
+        >
         <div className="flex flex-col mt-[30px] sm:items-center sm:mt-[60px] lg:items-start">
           <h1 className="text-[30px] font-semibold mb-2.5 sm:text-[52px] sm:mb-5 lg:text-[52px] xl:text-[72px]">
             Hi, I'm <span className="text-[#3b82f6] font-semibold"> Atule</span>
