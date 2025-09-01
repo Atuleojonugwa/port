@@ -16,6 +16,7 @@
     "@fortawesome/free-solid-svg-icons": "^7.0.0",
     "@fortawesome/react-fontawesome": "^0.2.6",
     "@tailwindcss/vite": "^4.1.12",
+    "@vercel/analytics": "^1.5.0",
     "aos": "^2.3.4",
     "devicon": "^2.17.0",
     "emailjs-com": "^3.2.0",
