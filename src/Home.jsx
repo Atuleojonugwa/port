@@ -107,7 +107,7 @@ function Home() {
         image: project3,
         title: "Browser extension manager UI",
         description: "This Browser Extension Manager, built with React, Tailwind CSS, and JavaScript, provides a clean interface to view, filter, and manage extensions. It includes dark mode support, toggle activation, and quick removal options for an efficient user experience.",
-        link: "/extensionmanager"
+        link: "/extensionManager"
     },
 ]
 
